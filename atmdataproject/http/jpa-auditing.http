@@ -1,0 +1,14 @@
+### Create a new user
+
+POST http://localhost:8080/users/save
+Authorization: Bearer {{$auth.token()}}
+Content-Type: application/json
+
+//{
+//  "name": "Derin",
+//  "surname": "Melek"
+//}
+
+### Query the Demo endpoint
+GET http://localhost:8080/users/get
+Authorization: Bearer {{$auth.token()}}

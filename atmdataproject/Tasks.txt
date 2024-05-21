@@ -1,0 +1,2 @@
+-user tablosuna account_id column'u eklenecek
+-
