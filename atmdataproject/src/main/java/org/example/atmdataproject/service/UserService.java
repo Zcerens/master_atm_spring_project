@@ -19,4 +19,6 @@ public interface UserService {
     public List<User> findAll();
 
     public void userDeleted(User user);
+    List<User> findByIsActiveTrue();
+    List<User> findByIsActive(boolean isActive);
 }

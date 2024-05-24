@@ -36,7 +36,11 @@ public class User {
     private LocalDateTime lastModified;
 
     @Column(length = 4)
-    private int isActive;
+    private boolean isActive;//boolean
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
 }
 
 

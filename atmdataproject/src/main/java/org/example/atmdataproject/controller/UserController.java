@@ -41,7 +41,7 @@ public class UserController {
         boolean available = userService.isAvailable(user.getId()) ;
         if(available ){
             userService.userDeleted(user);
-            responseEntity = new ResponseEntity(user.getId() + " inactivated. Activation code: " + user.getIsActive(), HttpStatus.OK);
+            responseEntity = new ResponseEntity(user.getId() + " inactivated. Activation code: " + user.isActive(), HttpStatus.OK);
         }
         else {
             responseEntity = new ResponseEntity( "Not exist!", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -65,9 +65,10 @@ public class UserController {
 
     }
 
-    @GetMapping("/get")
+    @GetMapping("/get") //isactive==1
     public ResponseEntity<List<User>> findAllUsers(){
-        return ResponseEntity.ok(userService.findAll());
+        List<User> activeUsers = userService.findByIsActive(true);
+        return ResponseEntity.ok(activeUsers);
     }
 }
 

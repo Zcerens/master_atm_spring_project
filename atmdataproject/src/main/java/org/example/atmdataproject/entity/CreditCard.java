@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Table(name ="app_credit_card")
 @Entity
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class CreditCard {
     @Id
     @GeneratedValue
@@ -30,9 +32,11 @@ public class CreditCard {
     @JoinColumn(name = "bank_account_id") // İlişkiyi sağlayan sütunun adı
     private BankAccount bankAccount; // Kredi kartının bağlı olduğu banka hesabı
 
+
     @Column(nullable = false, updatable = false)
     @CreatedDate
     private LocalDateTime createTime;
+
     @Column(insertable = false)
     @LastModifiedDate
     private LocalDateTime lastModified;

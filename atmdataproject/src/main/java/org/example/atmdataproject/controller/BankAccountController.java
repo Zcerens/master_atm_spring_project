@@ -1,5 +1,6 @@
 package org.example.atmdataproject.controller;
 
+import jakarta.validation.Valid;
 import org.example.atmdataproject.entity.BankAccount;
 import org.example.atmdataproject.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class BankAccountController {
     private BankAccountService bankAccountService;
 
     @PostMapping("/createAccount")
-    public ResponseEntity<String> save(@RequestBody BankAccount bankAccount) {
+    public ResponseEntity<String> save(@Valid @RequestBody BankAccount bankAccount) {
         ResponseEntity<String> responseEntity = null;
         try {
             Integer integer = Integer.valueOf(bankAccountService.saveBankAccount(bankAccount));
